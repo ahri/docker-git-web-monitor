@@ -28,6 +28,9 @@ trap "cleanup" SIGINT SIGTERM
 
 child=-1
 while :; do
+    cd /
+    rm -rf /tmp/repo
+
     git clone --recursive --branch "$branch" "$repo" /tmp/repo
     cd /tmp/repo
 
@@ -50,7 +53,4 @@ while :; do
     done
 
     kill_child
-
-    cd /
-    rm -rf /tmp/repo
 done
